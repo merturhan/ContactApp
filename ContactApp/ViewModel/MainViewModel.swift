@@ -25,7 +25,7 @@ class MainViewModel : ObservableObject{
         var list = [PersonModel]()
         
         do{
-            let result = try db!.executeQuery("SELECT * FROM person", values: nil)
+            let result = try db!.executeQuery("SELECT * FROM Person", values: nil)
             
             while(result.next()) {
                 let person_id = Int(result.string(forColumn: "person_id"))!
@@ -49,7 +49,7 @@ class MainViewModel : ObservableObject{
         var list = [PersonModel]()
         
         do{
-            let result = try db!.executeQuery("SELECT * FROM person WHERE person_name like ? ", values: ["%\(word)%"])
+            let result = try db!.executeQuery("SELECT * FROM Person WHERE person_name like ? ", values: ["%\(word)%"])
             
             while(result.next()){
                 let person_id = Int(result.string(forColumn: "person_id"))!
@@ -71,7 +71,7 @@ class MainViewModel : ObservableObject{
         db?.open()
         
         do{
-            try db!.executeUpdate("DELETE FROM person WHERE person_id = ?", values: [person_id])
+            try db!.executeUpdate("DELETE FROM Person WHERE person_id = ?", values: [person_id])
             loader()
         }
         catch{

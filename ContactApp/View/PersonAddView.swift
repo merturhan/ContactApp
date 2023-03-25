@@ -12,10 +12,29 @@ struct PersonAddView: View {
     @State private var nameTF : String = ""
     @State private var phoneTF : String = ""
     
-    
+    var viewModel = PersonAddViewModel()
+    @Environment(\.presentationMode) var pm
     
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        
+        VStack(spacing: 25){
+            
+            TextField("Person Name", text: $nameTF)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            
+            TextField("Phone Number", text: $phoneTF)
+                .textFieldStyle(RoundedBorderTextFieldStyle())
+                .padding()
+            
+            Button("Add"){
+                viewModel.add(person_name: nameTF, person_phone: phoneTF)
+                pm.wrappedValue.dismiss()
+            }
+        }.navigationTitle("Person Add")
+            
+        
     }
 }
 

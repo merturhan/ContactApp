@@ -21,7 +21,7 @@ class PersonDetailsViewModel{
         db?.open()
         
         do{
-            try db!.executeUpdate("UPDATE person SET person_name = ? , person_phone = ? WHERE person_id = ?", values: [person_name, person_phone, person_id])
+            try db!.executeUpdate("UPDATE Person SET person_name = ? , person_phone = ? WHERE person_id = ?", values: [person_name, person_phone, person_id])
         }
         catch{
             print(error.localizedDescription)

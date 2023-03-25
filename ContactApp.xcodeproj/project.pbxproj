@@ -52,6 +52,7 @@
 		EEBEE97029CF843300799F6E /* PersonAddView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAddView.swift; sourceTree = "<group>"; };
 		EEBEE97229CF84B600799F6E /* PersonDetailsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonDetailsViewModel.swift; sourceTree = "<group>"; };
 		EEBEE97429CF878D00799F6E /* PersonAddViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PersonAddViewModel.swift; sourceTree = "<group>"; };
+		EEBEE99B29CF8EDB00799F6E /* libsqlite3.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libsqlite3.tbd; path = usr/lib/libsqlite3.tbd; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -70,6 +71,7 @@
 			children = (
 				EEBEE94029CF715700799F6E /* ContactApp */,
 				EEBEE93F29CF715700799F6E /* Products */,
+				EEBEE99A29CF8EDB00799F6E /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -150,6 +152,14 @@
 				EEBEE95D29CF7B3F00799F6E /* ContactApp-Bridging-Header.h */,
 			);
 			path = SQLite;
+			sourceTree = "<group>";
+		};
+		EEBEE99A29CF8EDB00799F6E /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				EEBEE99B29CF8EDB00799F6E /* libsqlite3.tbd */,
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */

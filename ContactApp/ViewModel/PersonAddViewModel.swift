@@ -21,7 +21,7 @@ class PersonAddViewModel{
         db?.open()
         
         do{
-            try db!.executeUpdate("INSERT INTO person (person_name,person_phone) VALUES (?,?)", values: [person_name, person_phone])
+            try db!.executeUpdate("INSERT INTO Person (person_name,person_phone) VALUES (?,?)", values: [person_name, person_phone])
         }
         catch{
             print(error.localizedDescription)

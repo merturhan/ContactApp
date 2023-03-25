@@ -13,6 +13,9 @@ struct PersonDetailsView: View {
     @State private var phoneTF : String = ""
     
     var person = PersonModel()
+    var viewModel = PersonDetailsViewModel()
+    
+    @Environment(\.presentationMode) var pm
     
     var body: some View {
         
@@ -28,7 +31,8 @@ struct PersonDetailsView: View {
                 .padding()
             
             Button("Update"){
-                
+                viewModel.update(person_id: person.person_id!, person_name: nameTF, person_phone: phoneTF)
+                pm.wrappedValue.dismiss()
             }
             
         }.navigationTitle("Person Details")
