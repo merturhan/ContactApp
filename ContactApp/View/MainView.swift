@@ -32,6 +32,7 @@ struct MainView: View {
                 }
             }
             .onAppear{
+                databaseCopy()
                 viewModel.loader()
             }
         }.searchable(text: $search, prompt: "Search")
@@ -44,6 +45,26 @@ struct MainView: View {
     func delete(at index : IndexSet){
         let person = viewModel.allPeople[index.first!]
         viewModel.delete(person_id: person.person_id!)
+    }
+    
+    func databaseCopy(){
+        let bundle = Bundle.main.path(forResource: "ContactAppDB", ofType: ".sqlite")
+        
+        let dbPath = NSSearchPathForDirectoriesInDomains(.documentDirectory, .userDomainMask, true).first!
+        
+        let destination = URL(fileURLWithPath: dbPath).appendingPathComponent("ContactAppDB.sqlite")
+        
+        let fm = FileManager.default
+        
+        if fm.fileExists(atPath: destination.path) {
+            print("Copied before.")
+        }else{
+            do{
+                try fm.copyItem(atPath: bundle!, toPath: destination.path)
+            }catch{
+                print(error.localizedDescription)
+            }
+        }
     }
 }
 
