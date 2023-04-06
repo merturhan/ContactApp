@@ -32,7 +32,7 @@ struct MainView: View {
                 }
             }
             .onAppear{
-                databaseCopy()
+//                copyDataBase()
                 viewModel.loader()
             }
         }.searchable(text: $search, prompt: "Search")
@@ -66,10 +66,33 @@ struct MainView: View {
             }
         }
     }
-}
-
-struct HomeScreen_Previews: PreviewProvider {
-    static var previews: some View {
-        MainView()
+    
+    func copyDataBase() -> Bool {
+        let fileManager = FileManager.default
+        var dbPath = ""
+        
+        do {
+            dbPath = try fileManager.url(for: .applicationSupportDirectory, in: .userDomainMask, appropriateFor: nil, create: true).appendingPathComponent("ContactAppDB.sqlite").path
+        } catch {
+            print(error.localizedDescription)
+            return false
+        }
+        
+        if !fileManager.fileExists(atPath: dbPath) {
+            let dbResourcePath = Bundle.main.path(forResource: "ContactAppDB", ofType: "sqlite")
+            do {
+                try fileManager.copyItem(atPath: dbResourcePath!, toPath: dbPath)
+            } catch {
+                print(error.localizedDescription)
+                return false
+            }
+        }
+        return true
+    }
+    
+    struct HomeScreen_Previews: PreviewProvider {
+        static var previews: some View {
+            MainView()
+        }
     }
 }
